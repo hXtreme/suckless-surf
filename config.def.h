@@ -76,7 +76,7 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
 #define SETPROP(r, s, p) { \
         .v = (const char *[]){ "/bin/sh", "-c", \
              "prop=\"$(printf '%b' \"$(xprop -id $1 $2 " \
-             "| sed \"s/^$2(STRING) = //;s/^\\\"\\(.*\\)\\\"$/\\1/\" && cat ~/.surf/bookmarks)\" " \
+             "| sed \"s/^$2(STRING) = //;s/^\\\"\\(.*\\)\\\"$/\\1/\" && cat ~/.config/surf/bookmarks)\" " \
              "| dmenu -l 10 -p \"$4\" -w $1)\" && " \
              "xprop -id $1 -f $3 8s -set $3 \"$prop\"", \
              "surf-setprop", winid, r, s, p, NULL \
@@ -113,9 +113,9 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
 #define BM_ADD(r) {\
         .v = (const char *[]){ "/bin/sh", "-c", \
              "(echo $(xprop -id $0 $1) | cut -d '\"' -f2 " \
-             "| sed 's/.*https*:\\/\\/\\(www\\.\\)\\?//' && cat ~/.surf/bookmarks) " \
-             "| awk '!seen[$0]++' > ~/.surf/bookmarks.tmp && " \
-             "mv ~/.surf/bookmarks.tmp ~/.surf/bookmarks", \
+             "| sed 's/.*https*:\\/\\/\\(www\\.\\)\\?//' && cat ~/.config/surf/bookmarks) " \
+             "| awk '!seen[$0]++' > ~/.config/surf/bookmarks.tmp && " \
+             "mv ~/.config/surf/bookmarks.tmp ~/.config/surf/bookmarks", \
              winid, r, NULL \
         } \
 }
